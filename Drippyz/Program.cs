@@ -1,7 +1,16 @@
+using Drippyz.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+//DbContext configuration (used nuget packet manager for usesqlserver)  Configrire sql server
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 

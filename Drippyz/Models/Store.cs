@@ -10,7 +10,8 @@ namespace Drippyz.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-
+        //Relationship (Store can have a list of products)
+        public List<Product> Products { get; set; }
 
     }
 }
