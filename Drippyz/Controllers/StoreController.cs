@@ -18,8 +18,8 @@ namespace Drippyz.Controllers
         //var data = return store in this controller and also  pass the data as a parameter to the view
         public async Task<IActionResult> IndexAsync()
         {
-            
-            return View(await _context.Stores.ToListAsync());
+            var allCinemas = await _context.Stores.ToListAsync();
+            return View(allCinemas);
             
         }
     }

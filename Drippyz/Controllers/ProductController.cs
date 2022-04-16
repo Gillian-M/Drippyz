@@ -19,7 +19,9 @@ namespace Drippyz.Controllers
         //Asynchronous method
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            var allProducts = await _context.Products.Include(n => n.Store).OrderBy(n => n.Name).ToListAsync();
+            return View(allProducts);
+           // return View(await _context.Products.ToListAsync());
         }
     }
 }

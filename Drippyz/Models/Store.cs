@@ -6,8 +6,14 @@ namespace Drippyz.Models
     {  
         [Key]
         public int Id { get; set; }
+
+        [Display(Name = "Company Logo")]
         public string Glyph { get; set; }
+
+        [Display(Name = "Company Name")]
         public string Name { get; set; }
+
+        [Display(Name = "About")]
         public string Description { get; set; }
 
         //Relationship (Store can have a list of products)
