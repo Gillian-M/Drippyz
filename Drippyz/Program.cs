@@ -5,8 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 
-//DbContext configuration (used nuget packet manager for usesqlserver)  Configrire sql server
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer());
+//DbContext configuration (used nuget packet manager for usesqlserver)  Configrire sql server (which c# classes it needs to translate)
+//USE SQL Server ;installed and used mcrosoft entity framework core and defined the connection string
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString") ?? throw new InvalidOperationException("Connection string 'ProductsContext' not found.")));
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -34,3 +37,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+

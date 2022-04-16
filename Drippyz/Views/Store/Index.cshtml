@@ -1,0 +1,39 @@
+﻿ 
+@* Define model list and view data   *@
+
+@model IEnumerable<Store>
+@{
+    ViewData["Title"] = "List of Stores"
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+
+        <table>
+            <thead>
+
+                <tr>
+
+                        <th></th>
+                        <th>@Html.DisplayNameFor(model=> model.Name)</th>
+                        <th>@Html.DisplayNameFor(model=> model.Description)</th>
+                    </tr>
+            </thead>
+                <tbody>
+                    @foreach    (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle"><img src="@item.Glyph" alt="@item.Name" style="max-width:150px;" /></td>
+                        <td class="align-middle"></td>
+                        <td class="align-middle"></td>
+                    </tr>
+                }
+
+                </tbody>
+           
+
+        </table>
+
+    </div>
+</div>
+
