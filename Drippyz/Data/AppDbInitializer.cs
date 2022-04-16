@@ -25,8 +25,7 @@ namespace Drippyz.Data
                             Name = "Drippyz",
                             Description = "Ice cream company",
 
-                        },
-
+                        }
 
                     });
                     context.SaveChanges();
@@ -49,6 +48,11 @@ namespace Drippyz.Data
                     context.SaveChanges();
                 }
             }
+        }
+
+        internal static void Seed()
+        {
+            throw new NotImplementedException();
         }
     }
 }

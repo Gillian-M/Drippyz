@@ -38,3 +38,5 @@ app.MapControllerRoute(
 
 app.Run();
 
+//Seed database (Iapplication builder)
+AppDbInitializer.Seed(app);

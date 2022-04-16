@@ -7,9 +7,9 @@ namespace Drippyz.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext>options ) : base(options)
         {
-
         }
 
+        //Passing the model builder to the base class
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         { 
             base.OnModelCreating(modelBuilder);
