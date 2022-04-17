@@ -1,21 +1,21 @@
 ﻿@model Store
 
 @{
-    ViewData["Title"] = "Update Store";
+    ViewData["Title"] = "Add a new Store";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Updates Store</h1>
+            <h1>Add a New Store</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Edit">
+                <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group text-center">
-                        <img id="StoreGlyphPreview"  class="border-info rounded-circle" style="max-width: 150px" />
+                        <img id="StoreLogoPreview"  class="border-info rounded-circle" style="max-width: 150px" />
                     </div>
                     <div class="form-group">
                         <label asp-for="Glyph" class="control-label"></label>
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
                         <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
                     </div>
                 </form>
@@ -47,12 +47,12 @@
     <script>
 
         $(document).ready(function () {
-            var output = document.getElementById('StoreGlyphPreview');
-            output.src = $("#Glyph").val();
+            var output = document.getElementById('StoreLogoPreview');
+            output.src = $("#Logo").val();
         })
 
-        $("#Glyph").on("change", function () {
-            var output = document.getElementById('StoreGlyphPreview');
+        $("#Logo").on("change", function () {
+            var output = document.getElementById('StoreLogoPreview');
             output.src = $(this).val();
         })
     </script>
