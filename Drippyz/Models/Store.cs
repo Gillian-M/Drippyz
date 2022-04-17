@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Drippyz.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace Drippyz.Models
 {
-    public class Store
+    //inherit from Ientitybase
+    public class Store:IEntityBase
     {  
         [Key]
         public int Id { get; set; }

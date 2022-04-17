@@ -1,4 +1,5 @@
 ﻿using Drippyz.Data;
+using Drippyz.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,21 +7,20 @@ namespace Drippyz.Controllers
 {
     public class StoreController : Controller
     {
-        //declare app db context 
-        private readonly AppDbContext _context;
+        // //inject IStore service 
+        private readonly IStoresService _service;
         //constructor
-        public StoreController(AppDbContext context)
+        public StoreController(IStoresService service)
         {
-            _context = context;
+            _service = service;
         }
 
         //default action result 
         //var data = return store in this controller and also  pass the data as a parameter to the view
-        public async Task<IActionResult> IndexAsync()
+        public async Task<IActionResult> Index()
         {
-            var allCinemas = await _context.Stores.ToListAsync();
-            return View(allCinemas);
-            
+            var allStores = await _service.GetAllAsync();
+            return View(allStores);
         }
     }
 }
