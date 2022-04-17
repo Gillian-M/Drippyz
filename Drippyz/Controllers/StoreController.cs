@@ -1,5 +1,6 @@
 ﻿using Drippyz.Data;
 using Drippyz.Data.Services;
+using Drippyz.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,19 @@ namespace Drippyz.Controllers
         {
             var allStores = await _service.GetAllAsync();
             return View(allStores);
+        }
+
+        //Get Request Create View 
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Glyph,Name,Description")]Store store)
+        {
+            if (!ModelState.IsValid) return View(store);
+            await _service.AddAsync(store);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
