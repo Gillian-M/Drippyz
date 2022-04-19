@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drippyz.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -16,5 +17,6 @@ namespace Drippyz.Data.Base
         Task AddAsync(T entity);
         Task UpdateAsync(int id, T entity);
         Task DeleteAsync(int id);
+        Task<Product> GetProductByIdAsync(int id);
     }
 }
