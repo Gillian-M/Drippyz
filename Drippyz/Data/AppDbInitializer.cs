@@ -68,6 +68,10 @@ namespace Drippyz.Data
             }
         }
 
+        internal void Initialize()
+        {
+            throw new NotImplementedException();
+        }
         internal static void Seed()
         {
             throw new NotImplementedException();

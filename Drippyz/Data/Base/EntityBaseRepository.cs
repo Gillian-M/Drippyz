@@ -1,4 +1,5 @@
 ﻿using Drippyz.Data;
+using Drippyz.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -53,6 +54,11 @@ namespace Drippyz.Data.Base
             IQueryable<T> query = _context.Set<T>();
             query = includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
             return await query.FirstOrDefaultAsync(n => n.Id == id);
+        }
+
+        public Task<Product> GetProductByIdAsync(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task UpdateAsync(int id, T entity)
