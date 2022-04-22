@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(buil
 
 
 
+builder.Services.AddScoped<AppDbInitializer>(); //can be placed among other "AddScoped" - above: var app = builder.Build(); 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -26,6 +27,9 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+SeedDatabase();
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -38,5 +42,15 @@ app.MapControllerRoute(
 
 app.Run();
 
+
+
 //Seed database (Iapplication builder)
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
+void SeedDatabase() //can be placed at the very bottom under app.Run()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<AppDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}

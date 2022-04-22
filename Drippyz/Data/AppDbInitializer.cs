@@ -6,7 +6,7 @@ namespace Drippyz.Data
     {
         public static void Seed(IApplicationBuilder applicationBuilder)
         {
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            using (IServiceScope serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 var context = serviceScope.ServiceProvider.GetService<AppDbContext>();
 
@@ -48,6 +48,11 @@ namespace Drippyz.Data
                     context.SaveChanges();
                 }
             }
+        }
+
+        internal void Initialize()
+        {
+            throw new NotImplementedException();
         }
 
         internal static void Seed()
